@@ -116,11 +116,11 @@ def main(llm_tikz, perf_tikz, llm_img, perf_img):
     text_to_write = ""
     text_to_write += "Date : " + date + "\n"
     text_to_write += "---------------------"
-    text_to_write += "Tikz code accuracy : " + tikz_accuracy + "\n"
+    text_to_write += "Tikz code accuracy : " + str(tikz_accuracy) + "\n"
     text_to_write += "---------------------"
-    text_to_write += "Image modification accuracy : " + img_accuracy + "\n"
+    text_to_write += "Image modification accuracy : " + str(img_accuracy) + "\n"
     text_to_write += "---------------------"
-    text_to_write += "Global accuracy : " + llm_accuracy
+    text_to_write += "Global accuracy : " + str(llm_accuracy)
     
     result.write(text_to_write)
     
