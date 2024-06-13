@@ -3,9 +3,11 @@ import subprocess
 
 
 def main(prompt_txt,tikz_tex,perf_img,perf_tikz):
+    print('\n' + 'Tikz compilation ------------' + '\n')
     subprocess.run('python3 tikzcompiler.py ' + tikz_tex)
+    print('\n' +'Chatgptcaller ------------' + '\n')
     subprocess.run('python3 chatgptcaller.py' + tikz_tex + ' '+ prompt_txt)
-
+    print('\n' +' Diff ------------' + '\n')
     subprocess.run('python3 diff.py ' + 
                     'Ressources/Tikz/tikz_res.tex' + ' ' +
                     perf_tikz + ' ' + 
@@ -14,7 +16,7 @@ def main(prompt_txt,tikz_tex,perf_img,perf_tikz):
     
 
 if __name__ == "__main__":
-    if len(sys.argv) != 6:
+    if len(sys.argv) != 5:
         print("Params to use the script : prompt_txt,tikz_tex,perf_img,perf_tikz")
     else:
         prompt_txt = sys.argv[1]
