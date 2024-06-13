@@ -1,25 +1,25 @@
-import openai
+from openai import OpenAI
 import os
 import sys
 import subprocess
 
-def call_chatgpt(prompt):
-    
-    openai.api_key = os.environ.get('OPENAI_API_KEY')
+client = OpenAI(api_key=os.environ.get('OPENAI_API_KEY'))
 
-    response = openai.Completion.create(
-        engine="gpt-3.5-turbo",
-        prompt=prompt,
-        max_tokens=2048,
-        n=1,
-        stop=None,
-        temperature=0.2,
-    )
+
+def call_chatgpt(prompt):
+
+
+    response = client.completions.create(engine="gpt-3.5-turbo",
+    prompt=prompt,
+    max_tokens=2048,
+    n=1,
+    stop=None,
+    temperature=0.2)
 
     return response.choices[0].text.strip()
 
 def main(tex_file, prompt_file):
-    
+
     with open(tex_file, 'r') as file:
         tex_content = file.read()
     with open(prompt_file, 'r') as file:

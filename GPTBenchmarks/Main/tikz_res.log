@@ -2,8 +2,8 @@ This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (prel
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**../Ressources/Tikz/onlydog.tex
-(../Ressources/Tikz/onlydog.tex
+**../Ressources/Tikz/tikz_res.tex
+(../Ressources/Tikz/tikz_res.tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2022-01-21>
 (/usr/share/texlive/texmf-dist/tex/latex/standalone/standalone.cls
@@ -380,8 +380,8 @@ File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count283
 \l__pdf_internal_box=\box62
 )
-(./onlydog.aux)
-\openout1 = `onlydog.aux'.
+(./tikz_res.aux)
+\openout1 = `tikz_res.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 61.
 LaTeX Font Info:    ... okay on input line 61.
@@ -425,18 +425,18 @@ zlibrarypositioning.code.tex
 File: tikzlibrarypositioning.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 ) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./onlydog.aux) ) 
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./tikz_res.aux) ) 
 Here is how much of TeX's memory you used:
  13285 strings out of 480247
- 276569 string characters out of 5896151
- 558381 words of memory out of 5000000
+ 276572 string characters out of 5896151
+ 558367 words of memory out of 5000000
  31015 multiletter control sequences out of 15000+600000
  469427 words of font info for 29 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 115i,7n,118p,448b,1178s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on onlydog.pdf (1 page, 11709 bytes).
+ 115i,7n,118p,449b,1178s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on tikz_res.pdf (1 page, 11718 bytes).
 PDF statistics:
  16 PDF objects out of 1000 (max. 8388607)
  10 compressed objects within 1 object stream

@@ -102,7 +102,7 @@ To implement : expected location
 """
 def main(llm_tikz, perf_tikz, llm_img, perf_img):
 
-    result = open("Results/results.txt", "w")
+    result = open("../Ressources/Tikz/tikz_res.txt", "w")
     """ Accuracy of the code modification """
     tikz_accuracy = comp_tikz_simple(llm_tikz,perf_tikz)
 
@@ -126,7 +126,7 @@ def main(llm_tikz, perf_tikz, llm_img, perf_img):
     
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
+    if len(sys.argv) != 5:
         print("Params to use diff.py : llm_tikz, perf_tikz, llm_img, perf_img")
     else :
         llm_tikz = sys.argv[1]
