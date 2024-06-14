@@ -2,6 +2,6 @@ parameters:
   - prompt: "Change the color of the eyes of the dog described by this tikz file in red"
     tikz: "../Ressources/Tikz/onlydog.tex"
     perf_tikz: "../Ressources/Tikz/onlydog_modified.tex"
-  - prompt: "Change the color of the eyes of the dog described by this tikz file in blue"
+  - prompt: "Change the color of the eyes of the dog described by this tikz file in red"
     tikz: "../Ressources/Tikz/onlydog.tex"
     perf_tikz: "../Ressources/Tikz/onlydog_modified.tex"

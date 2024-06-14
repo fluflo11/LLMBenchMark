@@ -1,6 +1,7 @@
 from openai import OpenAI
 import os
 import sys
+import yaml
 
 client = OpenAI(api_key=os.environ.get('OPENAI_API_KEY'))
 
@@ -9,18 +10,21 @@ OPENAI API caller
 """
 def call_chatgpt(prompt,tex_file,sysgoal):
 
-    
-
+    with open('../Ressources/Config/config.yaml', "r") as file:
+        config = yaml.safe_load(file)
+    conf_temp = config.get("temperature")
+    conf_model = config.get("llm_model")
+    conf_tokens = config.get("max_tokens_per_iteration")
     messages_llm = [{"role": "system", "content":sysgoal},
                     {"role":"user", "content":tex_file},
                     {"role": "user", "content":prompt}]
     response = client.chat.completions.create(
-    model="gpt-3.5-turbo",
+    model=conf_model,
     messages = messages_llm,
-    max_tokens=2048,
+    max_tokens=conf_tokens,
     n=1,
     stop=None,
-    temperature=0.2,
+    temperature=conf_temp,
     stream=False
     )
     return response.choices[0].message.content
