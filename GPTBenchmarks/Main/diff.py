@@ -5,6 +5,7 @@ import subprocess
 from datetime import datetime
 import sys
 import os
+import yaml
 
 #Compiled tikz comparison
 #Just two images comparison
@@ -113,23 +114,22 @@ def main(llm_tikz, perf_tikz, llm_img, perf_img):
 
     date = datetime.now()
     date_str = date.strftime("%d/%m/%Y %H:%M:%S")
-    filename_date_str = date.strftime("Bench_%d-%H-%M-%S.txt")
+    filename_date_str = date.strftime("Bench_%d-%H-%M-%S.yaml")
 
     result_dir = "../Ressources/Results"
     os.makedirs(result_dir, exist_ok=True)
     result_path = os.path.join(result_dir, filename_date_str)
 
-    text_to_write = "\n"
-    text_to_write += "Date : " + str(date) + "\n"
-    text_to_write += "---------------------"
-    text_to_write += "Tikz code accuracy : " + str(tikz_accuracy) + "\n"
-    text_to_write += "---------------------"
-    text_to_write += "Image modification accuracy : " + str(img_accuracy) + "\n"
-    text_to_write += "---------------------"
-    text_to_write += "Global accuracy : " + str(llm_accuracy)
+    data_to_write = {
+        "date": date_str,
+        "tikz_accuracy": float(tikz_accuracy),
+        "image_accuracy": float(img_accuracy),
+        "global_accuracy": float(llm_accuracy)
+    }
+   
     
-    with open(result_path,'a') as result:
-        result.write(text_to_write)
+    with open(result_path,'w') as result:
+        yaml.safe_dump(data_to_write, result)
     
 
 if __name__ == "__main__":
