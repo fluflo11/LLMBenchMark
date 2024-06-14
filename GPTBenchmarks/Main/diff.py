@@ -120,7 +120,7 @@ def main(llm_tikz, perf_tikz, llm_img, perf_img):
     result_path = os.path.join(result_dir, filename_date_str)
 
     text_to_write = "\n"
-    text_to_write += "Date : " + date + "\n"
+    text_to_write += "Date : " + str(date) + "\n"
     text_to_write += "---------------------"
     text_to_write += "Tikz code accuracy : " + str(tikz_accuracy) + "\n"
     text_to_write += "---------------------"
