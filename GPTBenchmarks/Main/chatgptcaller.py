@@ -4,7 +4,9 @@ import sys
 
 client = OpenAI(api_key=os.environ.get('OPENAI_API_KEY'))
 
-
+"""
+OPENAI API caller
+"""
 def call_chatgpt(prompt,tex_file,sysgoal):
 
     

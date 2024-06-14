@@ -7,9 +7,7 @@ import sys
 import os
 import yaml
 
-#Compiled tikz comparison
-#Just two images comparison
-#--------------------------------
+
 def mse(imageA, imageB):
     if imageA.shape != imageB.shape:
         raise ValueError("the two tikz must have the same resolution")
@@ -22,7 +20,10 @@ def comp_img(llm_img, expected_img):
     gradient2 = cv2.cvtColor(expected_img, cv2.COLOR_BGR2GRAY)
     err = mse(gradient1, gradient2)
     return  err / 255.0
-
+"""
+    Comparaison of two images. 
+    img_acc returns a result between 0 and 1, with 0 meaning identical images, and 1 meaning totally different images
+"""
 def img_acc(llm_img, expected_img):
 
     llm_img_content = cv2.imread(llm_img)
@@ -36,8 +37,8 @@ def img_acc(llm_img, expected_img):
     return comp_img(llm_img_content,expected_img_content)
     
 
-"""Tikz Comparison
-
+""" EXPERIMENTAL
+    Tikz Comparison
     tikz1 the file before llm modifications
     tikz2 the filer after llm modifications
     expected_add the expected added code
@@ -99,9 +100,7 @@ def comp_tikz_simple(tikz_llm,tikz_perf):
         
     
 
-"""
-To implement : expected location
-"""
+
 def main(llm_tikz, perf_tikz, llm_img, perf_img):
 
     """ Accuracy of the code modification """
