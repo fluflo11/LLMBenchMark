@@ -16,6 +16,7 @@ def main(prompt_txt, tikz_tex, perf_tikz):
     subprocess.run(['python3', tikzcompiler_path, tikz_tex])
     time.sleep(1)
 #---------------------------------------------------------------
+
     print('\n' + 'Chatgptcaller ------------' + '\n')
     subprocess.run(['python3', 'chatgptcaller.py', tikz_tex, prompt_txt])
     time.sleep(1)
@@ -40,7 +41,7 @@ def main(prompt_txt, tikz_tex, perf_tikz):
 
 if __name__ == "__main__":
     if len(sys.argv) != 4:
-        print("Params to use the script: prompt_txt, tikz_tex, perf_img, perf_tikz")
+        print("Params to use the script: prompt_txt, tikz_tex, perf_tikz")
     else:
         prompt_txt = sys.argv[1]
         tikz_tex = sys.argv[2]

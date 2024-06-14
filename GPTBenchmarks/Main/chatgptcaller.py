@@ -1,12 +1,13 @@
 from openai import OpenAI
 import os
 import sys
-import subprocess
 
 client = OpenAI(api_key=os.environ.get('OPENAI_API_KEY'))
 
 
 def call_chatgpt(prompt,tex_file,sysgoal):
+
+    
 
     messages_llm = [{"role": "system", "content":sysgoal},
                     {"role":"user", "content":tex_file},
@@ -26,15 +27,13 @@ def call_chatgpt(prompt,tex_file,sysgoal):
 
 
 
-def main(tex_file, prompt_file):
+def main(tex_file, prompt):
 
     with open(tex_file, 'r') as file:
         tex_content = file.read()
-    with open(prompt_file, 'r') as file:
-        prompt_content = file.read()
 
     sysgoal = "You are a helpful assistant for programming and customizing code. All you have to do is answer the question by writing the entire code with the modifications. To modify the code, use the comments. DO NOT answer anything other than the entire code. If you make mistakes, don't apologize, just send the entire code with the modifications"
-    result = call_chatgpt(prompt_content,tex_content,sysgoal)
+    result = call_chatgpt(prompt,tex_content,sysgoal)
     
     
     os.makedirs('Ressources', exist_ok=True)
@@ -48,5 +47,5 @@ if __name__ == "__main__":
         print("Command to use the script : python3 chatgptcaller.py <tex_file> <prompt_file>")
     else:
         tex_file = sys.argv[1]
-        prompt_file = sys.argv[2]
-        main(tex_file, prompt_file)
+        prompt = sys.argv[2]
+        main(tex_file, prompt)
