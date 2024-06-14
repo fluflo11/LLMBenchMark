@@ -3,7 +3,7 @@ import subprocess
 import os
 import time
 
-def main(prompt_txt, tikz_tex, perf_img, perf_tikz):
+def main(prompt_txt, tikz_tex, perf_tikz):
 
     print('\n' + 'Tikz compilation ------------' + '\n')
 
@@ -14,36 +14,35 @@ def main(prompt_txt, tikz_tex, perf_img, perf_tikz):
         return
     
     subprocess.run(['python3', tikzcompiler_path, tikz_tex])
-    time.sleep(2)
+    time.sleep(1)
 #---------------------------------------------------------------
     print('\n' + 'Chatgptcaller ------------' + '\n')
     subprocess.run(['python3', 'chatgptcaller.py', tikz_tex, prompt_txt])
-    time.sleep(2)
+    time.sleep(1)
 #---------------------------------------------------------------
     print('\n' + 'Tikz compilation ------------' + '\n')
 
     
     subprocess.run(['python3', tikzcompiler_path, '../Ressources/Tikz/tikz_res.tex'])
     subprocess.run(['python3', tikzcompiler_path, '../Ressources/Tikz/onlydog_modified.tex'])
-    time.sleep(2)
+    time.sleep(1)
 
 #---------------------------------------------------------------
     print('\n' + 'Diff ------------' + '\n')
-
+    perfect_img = perf_tikz.replace(".tex",".jpg")
     subprocess.run(['python3', 'diff.py',
                     '../Ressources/Tikz/tikz_res.tex',
                     perf_tikz,
                     '../Ressources/Tikz/tikz_res.jpg',
-                    perf_img])
+                    perfect_img])
     
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 5:
+    if len(sys.argv) != 4:
         print("Params to use the script: prompt_txt, tikz_tex, perf_img, perf_tikz")
     else:
         prompt_txt = sys.argv[1]
         tikz_tex = sys.argv[2]
-        perf_img = sys.argv[3]
-        perf_tikz = sys.argv[4]
-        main(prompt_txt, tikz_tex, perf_img, perf_tikz)
+        perf_tikz = sys.argv[3]
+        main(prompt_txt, tikz_tex, perf_tikz)
