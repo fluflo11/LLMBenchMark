@@ -4,6 +4,7 @@ from Levenshtein import distance
 import subprocess
 from datetime import datetime
 import sys
+import os
 
 #Compiled tikz comparison
 #Just two images comparison
@@ -102,7 +103,6 @@ To implement : expected location
 """
 def main(llm_tikz, perf_tikz, llm_img, perf_img):
 
-    result = open("../Ressources/Tikz/tikz_res.txt", "w")
     """ Accuracy of the code modification """
     tikz_accuracy = comp_tikz_simple(llm_tikz,perf_tikz)
 
@@ -111,9 +111,15 @@ def main(llm_tikz, perf_tikz, llm_img, perf_img):
 
     llm_accuracy = (tikz_accuracy + img_accuracy)/2
 
-    date = (datetime.now()).strftime("%d/%m/%Y %H:%M:%S")
-    
-    text_to_write = ""
+    date = datetime.now()
+    date_str = date.strftime("%d/%m/%Y %H:%M:%S")
+    filename_date_str = date.strftime("Bench_%d-%H-%M-%S.txt")
+
+    result_dir = "../Ressources/Results"
+    os.makedirs(result_dir, exist_ok=True)
+    result_path = os.path.join(result_dir, filename_date_str)
+
+    text_to_write = "\n"
     text_to_write += "Date : " + date + "\n"
     text_to_write += "---------------------"
     text_to_write += "Tikz code accuracy : " + str(tikz_accuracy) + "\n"
@@ -122,7 +128,8 @@ def main(llm_tikz, perf_tikz, llm_img, perf_img):
     text_to_write += "---------------------"
     text_to_write += "Global accuracy : " + str(llm_accuracy)
     
-    result.write(text_to_write)
+    with open(result_path,'a') as result:
+        result.write(text_to_write)
     
 
 if __name__ == "__main__":
